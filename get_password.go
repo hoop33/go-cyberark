@@ -4,6 +4,7 @@ import (
 	"encoding/json"
 	"errors"
 	"net/url"
+	"strconv"
 )
 
 const getPasswordPath = "Accounts"
@@ -30,17 +31,18 @@ type GetPasswordResult struct {
 	StatusCode int
 	ErrorCode  string
 	ErrorMsg   string
-	Content string
-	UserName string
-	Address string
-	Database string
-	PolicyID string
+	Content    string
+	UserName   string
+	Address    string
+	Database   string
+	PolicyID   string
 	Properties map[string]string
 }
 
 func newGetPasswordService(client *Client) *GetPasswordService {
 	return &GetPasswordService{
-		client: client,
+		client:  client,
+		timeout: 30,
 	}
 }
 
@@ -143,8 +145,17 @@ func (s *GetPasswordService) buildURL() (string, url.Values) {
 	params := url.Values{}
 
 	setParam(&params, "appId", s.appID)
-	setParam(&params, "safe", s.safe)
+	setParam(&params, "address", s.address)
+	setParam(&params, "database", s.database)
+	setParam(&params, "folder", s.folder)
 	setParam(&params, "object", s.object)
+	setParam(&params, "policyID", s.policyID)
+	setParam(&params, "query", s.query)
+	setParam(&params, "queryFormat", s.queryFormat)
+	setParam(&params, "reason", s.reason)
+	setParam(&params, "safe", s.safe)
+	setParam(&params, "timeout", strconv.Itoa(s.timeout))
+	setParam(&params, "userName", s.userName)
 
 	return getPasswordPath, params
 }
