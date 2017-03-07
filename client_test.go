@@ -13,6 +13,12 @@ func TestNewClientHostIsRequired(t *testing.T) {
 	assert.Equal(t, "host is required", err.Error())
 }
 
+func TestSetHostFailsOnBlank(t *testing.T) {
+	_, err := NewClient(SetHost(""))
+	assert.NotNil(t, err)
+	assert.Equal(t, "host cannot be empty", err.Error())
+}
+
 func TestNewClientAddsProtocolWhenNotSpecified(t *testing.T) {
 	c, err := NewClient(SetHost("foo"))
 	assert.Nil(t, err)
