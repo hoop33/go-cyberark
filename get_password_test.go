@@ -7,14 +7,14 @@ import (
 	"github.com/stretchr/testify/assert"
 )
 
-func DoShouldFailWhenNoClient(t *testing.T) {
+func TestDoShouldFailWhenNoClient(t *testing.T) {
 	s := &GetPasswordService{}
 	_, err := s.Do()
 	assert.NotNil(t, err)
 	assert.Equal(t, "Client is required", err.Error())
 }
 
-func DoShouldFailWhenNoAppID(t *testing.T) {
+func TestDoShouldFailWhenNoAppID(t *testing.T) {
 	c, err := NewClient(SetHost("foo"))
 	assert.Nil(t, err)
 
