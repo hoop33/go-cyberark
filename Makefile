@@ -20,7 +20,14 @@ interfacer:
 	interfacer $(PACKAGES)
 
 test:
-	go test -cover $(PACKAGES)
+	go test -cover $(PACKAGES) 
+	
+coverage:
+	echo "mode: count" > coverage-all.out
+	$(foreach pkg,$(PACKAGES),\
+		go test -coverprofile=coverage.out -covermode=count $(pkg);\
+		tail -n +2 coverage.out >> coverage-all.out;)
+	go tool cover -html=coverage-all.out
 
 clean:
 	go clean
