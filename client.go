@@ -12,6 +12,9 @@ import (
 
 const basePath = "AIMWebService/api/"
 
+// Version is the semver-compliant library version
+const Version = "0.1.0"
+
 // ClientOptionFunc is a function that configures a client
 type ClientOptionFunc func(*Client) error
 
