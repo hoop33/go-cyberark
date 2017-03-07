@@ -89,6 +89,14 @@ To run tests and build, run:
 $ make
 ```
 
+To get coverage reports, run:
+
+```sh
+$ make coverage
+```
+
+This will open a browser with the coverage reports.
+
 ## Credits
 
 * [Testify](https://github.com/stretchr/testify)
