@@ -95,3 +95,15 @@ func TestSetParamShouldNotSetWhenNoValue(t *testing.T) {
 	setParam(&params, "foo", "")
 	assert.Equal(t, 0, len(params))
 }
+
+func TestBuildURLGetsPathAndParams(t *testing.T) {
+	s := &GetPasswordService{}
+	s.appID = "foo"
+	s.safe = "bar"
+	s.object = "baz"
+
+	path, params := s.buildURL()
+
+	assert.Equal(t, "Accounts", path)
+	assert.Equal(t, "appId=foo&object=baz&safe=bar", params.Encode())
+}
