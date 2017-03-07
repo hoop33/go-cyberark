@@ -1,6 +1,7 @@
 package cyberark
 
 import (
+	"net/url"
 	"testing"
 
 	"github.com/stretchr/testify/assert"
@@ -80,4 +81,17 @@ func TestTimeoutShouldGetSet(t *testing.T) {
 func TestUserNameShouldGetSet(t *testing.T) {
 	s := newGetPasswordService(nil).UserName("user")
 	assert.Equal(t, "user", s.userName)
+}
+
+func TestSetParamShouldSetWhenValuePresent(t *testing.T) {
+	params := url.Values{}
+	setParam(&params, "foo", "bar")
+	assert.Equal(t, 1, len(params))
+	assert.Equal(t, "bar", params.Get("foo"))
+}
+
+func TestSetParamShouldNotSetWhenNoValue(t *testing.T) {
+	params := url.Values{}
+	setParam(&params, "foo", "")
+	assert.Equal(t, 0, len(params))
 }
