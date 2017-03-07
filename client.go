@@ -85,7 +85,6 @@ func SetTimeout(timeout time.Duration) ClientOptionFunc {
 
 // PerformRequest performs an HTTP request to CyberArk
 func (c *Client) PerformRequest(method string, path string, params url.Values, body interface{}) (*Response, error) {
-
 	urlStr := c.buildURL(path)
 	if len(params) > 0 {
 		urlStr = fmt.Sprintf("%s?%s", urlStr, params.Encode())

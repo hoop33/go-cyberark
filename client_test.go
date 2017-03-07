@@ -72,3 +72,11 @@ func TestSetTimeoutSetsTimeout(t *testing.T) {
 	assert.Nil(t, err)
 	assert.Equal(t, time.Duration(15), c.timeout)
 }
+
+func TestGetPasswordReturnsNonNil(t *testing.T) {
+	c, err := NewClient(
+		SetHost("foo"),
+	)
+	assert.Nil(t, err)
+	assert.NotNil(t, c.GetPassword())
+}
