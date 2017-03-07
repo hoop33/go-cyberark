@@ -3,6 +3,7 @@ package cyberark
 import (
 	"fmt"
 	"testing"
+	"time"
 
 	"github.com/stretchr/testify/assert"
 )
@@ -35,4 +36,39 @@ func TestBuildURLBuildsCorrectly(t *testing.T) {
 	c, err := NewClient(SetHost("foo"))
 	assert.Nil(t, err)
 	assert.Equal(t, fmt.Sprintf("https://foo/%smy/path", basePath), c.buildURL("my/path"))
+}
+
+func TestSetSkipCertVerificationSetsToTrue(t *testing.T) {
+	c, err := NewClient(
+		SetHost("foo"),
+		SetSkipCertVerification(true),
+	)
+	assert.Nil(t, err)
+	assert.True(t, c.skipCertVerification)
+}
+
+func TestSetSkipCertVerificationSetsToFalse(t *testing.T) {
+	c, err := NewClient(
+		SetHost("foo"),
+		SetSkipCertVerification(false),
+	)
+	assert.Nil(t, err)
+	assert.False(t, c.skipCertVerification)
+}
+
+func TestDurationDefaultsTo30(t *testing.T) {
+	c, err := NewClient(
+		SetHost("foo"),
+	)
+	assert.Nil(t, err)
+	assert.Equal(t, time.Duration(30), c.timeout)
+}
+
+func TestSetTimeoutSetsTimeout(t *testing.T) {
+	c, err := NewClient(
+		SetHost("foo"),
+		SetTimeout(15),
+	)
+	assert.Nil(t, err)
+	assert.Equal(t, time.Duration(15), c.timeout)
 }
