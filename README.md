@@ -3,6 +3,8 @@
 > A Go wrapper for the CyberArk Vault API
 
 [![License](https://img.shields.io/badge/license-MIT-blue.svg)](http://opensource.org/licenses/MIT)
+[![Godoc](http://img.shields.io/badge/godoc-reference-blue.svg?style=flat)](https://godoc.org/github.com/hoop33/go-cyberark)
+[![Go Report Card](https://goreportcard.com/badge/github.com/hoop33/go-cyberark)](https://goreportcard.com/report/github.com/hoop33/go-cyberark)
 
 ## Table of Contents
 
