@@ -37,3 +37,4 @@ deps:
 	go get -u github.com/golang/lint/golint
 	go get -u github.com/kisielk/errcheck
 	go get -u github.com/mvdan/interfacer/cmd/interfacer
+	go get -u github.com/stretchr/testify
