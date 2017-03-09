@@ -18,7 +18,7 @@
 
 ## Introduction
 
-go-cyberark is a client library to talk to the CyberArk Vault API. Note that this library is purpose-built for my specific use case, and may not cover your use case.
+go-cyberark is a client library to talk to the CyberArk Vault API. Note that this library is purpose-built for my specific use case, and may not cover your use case. Contributions welcome -- see **Contributing** below.
 
 ## Installation
 
